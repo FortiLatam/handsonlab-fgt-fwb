@@ -126,7 +126,7 @@ variable "fwbsize" {
 
 //  Existing SSH Key on the AWS 
 variable "keyname" {
-  default = "fgallego-key-ssh"
+  default = "forti-ssh-key"
 }
 
 variable "adminsport" {
