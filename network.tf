@@ -240,6 +240,13 @@ resource "aws_security_group" "public_allow_legacy" {
     protocol    = "6"
     cidr_blocks = ["0.0.0.0/0"]
   }
+      
+  ingress {
+    from_port   = 1389
+    to_port     = 1389
+    protocol    = "6"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 
   ingress {
   from_port = -1
