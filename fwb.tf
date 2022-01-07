@@ -33,7 +33,7 @@ resource "aws_network_interface" "fwbeth0" {
   description       = "fwbvm-port1"
   subnet_id         = aws_subnet.privatesubnetaz1.id
   source_dest_check = false
-  private_ip        = var.ip_fwb
+  
 }
 
 
@@ -52,6 +52,7 @@ resource "aws_instance" "fwbvm" {
   availability_zone = var.az1
   key_name          = var.keyname
   user_data         = data.template_file.FortiWeb.rendered
+  private_ip        = var.ip_fwb
 
   root_block_device {
     volume_type = "standard"
