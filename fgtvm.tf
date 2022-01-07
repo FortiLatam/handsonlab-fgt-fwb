@@ -70,6 +70,7 @@ data "template_file" "FortiGate" {
     webserverinternal_ip = "${aws_instance.web-internal.private_ip}"
     privatesubnetaz1  = "${var.privatecidraz1}"
     fortiwebinternal_ip = "${var.ip_fwb}"
+    legacysubnet = "${var.publiclegcidraz1}"
   }
 }
 

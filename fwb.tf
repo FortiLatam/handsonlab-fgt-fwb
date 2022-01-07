@@ -29,11 +29,11 @@ data "aws_ami" "fwbvmpaygami" {
 
 
 
-resource "aws_network_interface" "fwbeth0" {
+/*resource "aws_network_interface" "fwbeth0" {
   description       = "fwbvm-port1"
   subnet_id         = aws_subnet.privatesubnetaz1.id
   source_dest_check = false
-  
+  private_ip        = var.ip_fwb
 }
 
 
@@ -41,7 +41,7 @@ resource "aws_network_interface_sg_attachment" "fwbpublicattachment" {
   depends_on           = [aws_network_interface.fwbeth0]
   security_group_id    = aws_security_group.public_allow.id
   network_interface_id = aws_network_interface.fwbeth0.id
-}
+}*/
 
 resource "aws_instance" "fwbvm" {
   
@@ -53,6 +53,8 @@ resource "aws_instance" "fwbvm" {
   key_name          = var.keyname
   user_data         = data.template_file.FortiWeb.rendered
   private_ip        = var.ip_fwb
+  subnet_id         = aws_subnet.privatesubnetaz1.id
+  security_groups   = [ aws_security_group.public_allow.id ]
 
   root_block_device {
     volume_type = "standard"
@@ -65,11 +67,11 @@ resource "aws_instance" "fwbvm" {
     volume_type = "standard"
   }
 
-  network_interface {
+/*  network_interface {
     network_interface_id = aws_network_interface.fwbeth0.id
     device_index         = 0
   }
-
+*/
   tags = {
     Name = "FortiWebVM"
   }
