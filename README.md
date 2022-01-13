@@ -17,7 +17,11 @@ All the cloud resources were deployed using Terraform.
 ![Topology](https://github.com/FortiLatam/handsonlab-fgt-fwb/blob/main/DOCS/Intro.png?raw=true)
 
 We will deploy the resources shown above. Fortinet products used are PAYG, but you can change the files to use your own license.
+
 FortiGate will be configured with NAT and initial firewall policies.
+
 FortiWeb doesnt contain any initial settings
+
 Web Legacy is an Ubuntu with Docker, and Log4Shell scripts
+
 Web Internal is an Ubuntu with Docker, DVWA, NGINX and Log4Shell containers
